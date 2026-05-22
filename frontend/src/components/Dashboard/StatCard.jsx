@@ -1,56 +1,46 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { TrendingUp, TrendingDown, Minus } from 'lucide-react'
 
-/**
- * Compact stat card with icon, value, label, and optional trend indicator.
- */
 export default function StatCard({
   title, value, subtitle, Icon,
-  iconColor = 'text-blue-600', iconBg = 'bg-blue-50',
-  trend = null,     // 'up' | 'down' | 'neutral'
+  trend = null,
   trendLabel = '',
   loading = false,
 }) {
-  const TrendIcon = trend === 'up' ? TrendingUp : trend === 'down' ? TrendingDown : Minus
-  const trendColor = trend === 'up' ? 'text-emerald-600' : trend === 'down' ? 'text-red-500' : 'text-slate-400'
-
   return (
     <div className="card flex flex-col gap-3">
-      {/* Top row */}
-      <div className="flex items-start justify-between gap-2">
-        <div className={`w-9 h-9 rounded-lg ${iconBg} flex items-center justify-center flex-shrink-0`}>
-          {Icon && <Icon size={18} className={iconColor} strokeWidth={2} />}
-        </div>
-        {trend && trendLabel && (
-          <div className={`flex items-center gap-0.5 text-xs font-medium ${trendColor}`}>
-            <TrendIcon size={13} strokeWidth={2} />
-            {trendLabel}
+      {/* Top row: label + icon */}
+      <div className="flex items-center justify-between gap-2">
+        <p className="text-[13px] font-medium text-[#6B7280]">{title}</p>
+        {Icon && (
+          <div className="w-9 h-9 rounded-lg bg-[#DBEAFE] flex items-center justify-center flex-shrink-0">
+            <Icon size={20} className="text-[#2563EB]" strokeWidth={2} />
           </div>
         )}
       </div>
 
       {/* Value */}
       {loading ? (
-        <div className="space-y-1.5">
-          <div className="skeleton h-7 w-16 rounded" />
-          <div className="skeleton h-3.5 w-24 rounded" />
+        <div className="space-y-2">
+          <div className="skeleton h-9 w-20 rounded" />
+          <div className="skeleton h-3.5 w-28 rounded" />
         </div>
       ) : (
-        <div>
-          <motion.p
-            key={value}
-            initial={{ opacity: 0.6, y: 2 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-2xl font-semibold text-slate-900 leading-none"
-          >
-            {value ?? '—'}
-          </motion.p>
-          <p className="text-xs text-slate-500 mt-1">{title}</p>
-          {subtitle && (
-            <p className="text-[11px] text-slate-400 mt-0.5">{subtitle}</p>
-          )}
-        </div>
+        <motion.p
+          key={value}
+          initial={{ opacity: 0.6, y: 2 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-[34px] font-bold text-[#111827] leading-none"
+        >
+          {value ?? '—'}
+        </motion.p>
+      )}
+
+      {/* Delta / subtitle */}
+      {!loading && (trendLabel || subtitle) && (
+        <p className="text-[12px] text-[#9CA3AF]">
+          {trendLabel || subtitle}
+        </p>
       )}
     </div>
   )

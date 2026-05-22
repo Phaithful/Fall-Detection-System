@@ -1,3 +1,4 @@
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
@@ -7,7 +8,7 @@ export default {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
-        page:    '#F1F5F9',
+        page:    '#F7F8FA',
         surface: '#FFFFFF',
       },
       boxShadow: {
@@ -31,4 +32,4 @@ export default {
     },
   },
   plugins: [],
-}
+};

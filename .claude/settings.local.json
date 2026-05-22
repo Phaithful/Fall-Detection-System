@@ -13,7 +13,10 @@
       "Bash(python -c \"import mediapipe as mp; print\\('solutions' in dir\\(mp\\)\\); print\\([x for x in dir\\(mp\\) if not x.startswith\\('_'\\)]\\)\")",
       "Bash(Get-ChildItem *)",
       "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\-\\\\Desktop\\\\projects\\\\Guardian_Eye\\\\frontend\\\\\" -Recurse -Directory | Select-Object -First 30 | ForEach-Object { $_.FullName })",
-      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\-\\\\Desktop\\\\projects\\\\Guardian_Eye\\\\frontend\\\\src\\\\\" -Recurse | Where-Object { $_.Extension -in '.jsx', '.js', '.ts', '.tsx' } | Select-Object -First 50 | ForEach-Object { $_.FullName })"
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\-\\\\Desktop\\\\projects\\\\Guardian_Eye\\\\frontend\\\\src\\\\\" -Recurse | Where-Object { $_.Extension -in '.jsx', '.js', '.ts', '.tsx' } | Select-Object -First 50 | ForEach-Object { $_.FullName })",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\-\\\\Desktop\\\\projects\\\\Guardian_Eye\\\\frontend\\\\src\" -Recurse -Exclude node_modules | ForEach-Object { $_.FullName } | Sort-Object)",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\-\\\\Desktop\\\\projects\\\\Guardian_Eye\\\\frontend\" -Depth 0 | Where-Object { -not $_.PSIsContainer } | Select-Object Name)"
     ]
   }
 }
